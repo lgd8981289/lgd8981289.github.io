@@ -17,7 +17,7 @@
 <blockquote>
 <p>npm的下载趋势图</p>
 </blockquote>
-<p><img src="https://img-blog.csdn.net/20180628102431328?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEwNjg5OTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p><img src="https://images.gitbook.cn/186d5020-8b03-11e8-9fe1-c1b3d2332fb0" alt="这里写图片描述"></p>
 <p>我们可以看到在Github上面，Vue的数据上升最快，并且在18年6月28日已经超过了React，成为了最受欢迎前端框架。而在npm中，React的数据遥遥领先，这得益于React强大的社区力量，我们无法否认，React社区作为当前最活跃的前端社区，提供出了特别多优秀的想法和理念，它们为React提供了强大的生态支持，同时也让我们在选择周边框架的时候需要进行更多的选择。</p>
 <p>  当然这三个框架都非常的优秀，我们不去讨论它们的优劣，我们的选择都只是基于我们的取舍：我们希望工具足够简单，而它可以解决的问题却要足够复杂。这就够了，不是吗？</p>
 <blockquote>
@@ -34,15 +34,17 @@
 <p>1、MVVM框架<br>2、单页面应用程序<br>3、轻量化与易学习<br>4、渐进式与兼容性<br>5、视图组件化<br>6、虚拟DOM（Virtual DOM）<br>7、社区支持<br>8、未来的Vue走向</p>
 </blockquote>
 <h4 id="（1）MVVM框架"><a href="#（1）MVVM框架" class="headerlink" title="（1）MVVM框架"></a>（1）MVVM框架</h4><p>所谓MVVM框架就是：View-ViewModel-Model，就像下面这样<br><img src="https://images.gitbook.cn/3a24c7f0-8b00-11e8-974b-497483da0812" alt="这里写图片描述"></p>
-<p>那么这个MVVM框架，我们应该怎么去理解呢？它的第一个View，相当于我们页面中的DOM，最后一个Model相当于我们的数据源，就像下面这个样子<br><img src="https://img-blog.csdn.net/20180628112455382?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEwNjg5OTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p>那么这个MVVM框架，我们应该怎么去理解呢？它的第一个View，相当于我们页面中的DOM，最后一个Model相当于我们的数据源，就像下面这个样子</p>
+<p><img src="https://images.gitbook.cn/326e43d0-8b03-11e8-8b1f-a92aedaeed58" alt="这里写图片描述"></p>
 <p>在这一块代码中，我们的a标签就是我们的DOM，我们的data对象就是我们的数据源，它们两者之间永远不会直接通信，它们所有的联系都是通过我们的ViewModel，也就是我们的监控者来进行的。我们的监控者会去负责检测我们数据的变化，然后把我们的数据实时展示在我们的页面中。比如说：我们把text的内容更改为“Hello Vue”的话，那么我们a标签中展示的内容，也会自动变为“Hello Vue”。这样就不需要我们去手动的操作DOM，所有的对DOM操作都会通过我们的监控者来完成。如果你以前写过复杂的DOM操作的话（比如：**.parent().parent().parent()…）,你就会发现，这种方式给你带来的便利了。</p>
 <p>Vue正是使用了这种MVVM的框架形式，并且通过<strong>声明式渲染</strong>和<strong>响应式数据绑定</strong>的方式来帮助我们完全避免了对DOM的操作。</p>
 <h4 id="（2）单页面应用程序"><a href="#（2）单页面应用程序" class="headerlink" title="（2）单页面应用程序"></a>（2）单页面应用程序</h4><p>单页面应用程序(SPA)，一般指为：一个页面就是一个应用（或子应用）。随着技术的发展，我们现在的前端网页早已不只局限于在浏览器上展示了，在我们的手机APP上、微信公众号上都有了越来越多的展示机会。</p>
-<p>那么如果把传统的多页面应用形式放入到我们的手机上面会是什么样子呢？当我们进行页面跳转打开一个新的页面的时候，它会变成这样<br><img src="https://img-blog.csdn.net/20180628151047131?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEwNjg5OTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
+<p>那么如果把传统的多页面应用形式放入到我们的手机上面会是什么样子呢？当我们进行页面跳转打开一个新的页面的时候，它会变成这样</p>
+<p><img src="https://images.gitbook.cn/50bd8300-8b03-11e8-8b1f-a92aedaeed58" alt="这里写图片描述"></p>
 <p>等的花儿都谢了有没有。</p>
 <p>而如果使用单页面的形式来开发的话，就不会出现这样一种情况。因为我们的整个应用就只有一个页面，当我们的这一个单页被加载进来之后，就不会在进行关于页面的网络请求。Vue配合生态圈中的Vue-Router就可以非常方便的开发复杂的单页应用。</p>
 <h4 id="（3）轻量化与易学习"><a href="#（3）轻量化与易学习" class="headerlink" title="（3）轻量化与易学习"></a>（3）轻量化与易学习</h4><p>我们知道我们网页中引入的JS体积越大，那么加载所需要耗费的时间就越长，反之体积越小，则越节省时间。所以我们会更倾向于使用体积更小的JS文件，这也是为什么我们在生产版本会引入.min的JS的原因。下面是我从Vue官网的截图</p>
-<p><img src="https://img-blog.csdn.net/20180628152541220?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEwNjg5OTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p><img src="https://images.gitbook.cn/618a5aa0-8b03-11e8-8838-3badd92eb83e" alt="这里写图片描述"></p>
 <p>目前Vue的最新稳定版本为2.5.16，从截图中我们可以看到Vue的生产版本只有30.90KB的大小，几乎不会对我们的网页加载速度产生影响。同时因为Vue只专注于视图层，单独的Vue就像一个库一样，所以使我们的学习成本变得非常低。</p>
 <h4 id="（4）渐进式与兼容性"><a href="#（4）渐进式与兼容性" class="headerlink" title="（4）渐进式与兼容性"></a>（4）渐进式与兼容性</h4><p>渐进式框架就是：我只做为分内的事情，并且我不会对你要求太多。</p>
 <blockquote>
@@ -51,9 +53,9 @@
 <p>这是Vue官网上面的一句话，正如我们在上面所说的，Vue只做界面，而把其他的一切都交给了它的周边生态来做处理，这就要求Vue必须要对其他的框架拥有最大程度的兼容性。</p>
 <p>比如说：一开始你只想做一个静态站，那么你可以只引入Vue来去构建你的界面，过了一段时间，你想在你的网站上加入访问网络的功能，那么你可以再引入<strong>axios（Vue官方推荐）</strong>或者其他的（哪怕是jQuery）网络请求框架，而后来随着你的网站越做越大，你想要把你的网站变成一个大型的web应用的时候，你可以引入一些其他你需要的JS文件如：Loadsh.js、Velocity.js等等。</p>
 <h4 id="（5）视图组件化"><a href="#（5）视图组件化" class="headerlink" title="（5）视图组件化"></a>（5）视图组件化</h4><p>所谓视图组件化就是把我们的网页拆分为一个个的组件，就像下面这样：</p>
-<p><img src="https://img-blog.csdn.net/20180628161017927?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEwNjg5OTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p><img src="https://images.gitbook.cn/7a7e2410-8b03-11e8-974b-497483da0812" alt="这里写图片描述"></p>
 <p>Vue允许我们通过组件来去拼装一个页面，每个组件都是一个可复用的Vue实例，组件里面可以包含自己的数据，视图和代码逻辑。比如说：</p>
-<p><img src="https://img-blog.csdn.net/20180628161706729?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEwNjg5OTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p><img src="https://images.gitbook.cn/878715e0-8b03-11e8-8e15-d7b3f4327e66" alt="这里写图片描述"></p>
 <p>CSDN的这个个人资料模块，大家都已经不陌生了吧，当我们的Web应用中有多个页面都使用到这个个人资料模块的时候，我们就可以把它封装成一个组件，这个组件拥有单独的代码逻辑、css样式、数据等等，在任何一个我们需要使用到它的地方，就可以通过</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;component-name&gt;&lt;/component-name&gt;</span><br><span class="line"></span><br><span class="line">Vue.component(&apos;component-name&apos;, &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>这种方式来直接引入了。</p>
@@ -69,7 +71,7 @@
 <p>而现在尤雨溪已经正式辞去了Google的工作，开始专职维护Vue，同时加入进来的还有几十位优秀的开发者，他们励志把Vue打造为最受欢迎的前端框架。事实证明Vue确实在往越来越好的方向发展（从angular、React、Vue的对比图中可以看出Vue的势头）。所以我觉得完全不需要担心未来Vue的发展，至少在没有新的颠覆性创新出来之前，Vue都会越做越好。</p>
 <h2 id="本课能够帮你些什么"><a href="#本课能够帮你些什么" class="headerlink" title="本课能够帮你些什么"></a>本课能够帮你些什么</h2><p>说了那么多，大家应该已经对Vue有了一个基础的了解了吧。那么我们看一下，我们这节课可以给你带来什么样的帮助。</p>
 <p>本课将从基础语法、生态系统、<a href="http://chat.lgdsunday.club/#/" target="_blank" rel="noopener">项目实战（你可以点击这里直接访问）</a>。这三个部分来帮助大家详细的了解Vue的知识，大家看一下下面的脑图。</p>
-<p><img src="https://img-blog.csdn.net/20180630151425717?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEwNjg5OTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p><img src="https://images.gitbook.cn/c4cea580-8b03-11e8-a3f8-ff18634ae51e" alt="这里写图片描述"></p>
 <p>这就是我们本课将要学习的所有内容。如果你是在手机上访问的话，也可以直接扫描这个二维码来查看我们的项目</p>
 <p><img src="https://images.gitbook.cn/be4e1810-8b00-11e8-9fe1-c1b3d2332fb0" alt="这里写图片描述"></p>
 <p>大家通过本次课程可以学习到。</p>
