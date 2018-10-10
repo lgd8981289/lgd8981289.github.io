@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="欢迎访问我的博客，如果大家想要了解我可以访问http://chat.lgdsunday.club/，这里提供了一个好玩的交互式问题界面"><title>尤雨溪：Vue 3.0 计划（译） | LGD_Sunday</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><script type="text/javascript" src="https://s13.cnzz.com/z_stat.php?id=1274342622&amp;web_id=1274342622"></script><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274342622'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1274342622' type='text/javascript'%3E%3C/script%3E"));
+$(function(){$("a[title='站长统计']").css("display","none");});</script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">尤雨溪：Vue 3.0 计划（译）</h1><a id="logo" href="/.">LGD_Sunday</a><p class="description">济南小哥</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="http://www.lgdsunday.club/"><i class="fa fa-user"> 关于我</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">尤雨溪：Vue 3.0 计划（译）</h1><div class="post-meta">Oct 10, 2018<span> | </span><span class="category"><a href="/categories/JavaScript/">JavaScript</a><a href="/categories/JavaScript/Vue/">Vue</a></span></div><a class="disqus-comment-count" href="/2018/10/10/尤雨溪：Vue 3.0 计划/#vcomment"><span class="valine-comment-count" data-xid="/2018/10/10/尤雨溪：Vue 3.0 计划/"></span><span> 条评论</span></a><div class="post-content"><blockquote>
+<p>原文：<a href="https://medium.com/the-vue-point/plans-for-the-next-iteration-of-vue-js-777ffea6fabf" target="_blank" rel="noopener">Plans for the Next Iteration of Vue.js</a><br>作者：Evan You（尤雨溪） 发表时间：Sep 30, 2018<br>转载请写明出处</p>
+</blockquote>
+<h2 id="计划下一次迭代Vue-js"><a href="#计划下一次迭代Vue-js" class="headerlink" title="计划下一次迭代Vue.js"></a>计划下一次迭代Vue.js</h2><p>上周在<a href="https://vuejs.london/summary/" target="_blank" rel="noopener">Vue.js伦敦</a>，我简要介绍了Vue的下一个主要版本即将发布的内容。这篇文章提供了对计划的深入概述。</p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*vFC8tDUGLlXIiqT7ymf3xg.png" alt="Vue"></p>
+<h2 id="为什么要更新主版本？"><a href="#为什么要更新主版本？" class="headerlink" title="为什么要更新主版本？"></a>为什么要更新主版本？</h2><p><code>Vue 2.0</code> 恰好在<a href="https://medium.com/the-vue-point/vue-2-0-is-here-ef1f26acf4b8" target="_blank" rel="noopener">两年前发布了</a>（时间过得真快！）。在此期间，核心仍然向后兼容五个次要版本。我们已经积累了许多可以带来改进的想法，但一直没有发布它们（3.0），因为它们与现在的版本（2.x）相比，变化很大。与此同时，<code>JavaScript</code>生态系统和语言本身也在迅速发展。有了需要新的工具可以增强我们的工作流程，以及出现了许多新的语言功能，可以解决<code>Vue</code>试图解决的问题。并且有了使它变得更简单，更完整和更有效的解决方案。更令人兴奋的是，我们看到<code>ES2015</code>支持成为所有主流浏览器的标准。<strong><code>Vue 3.0</code>旨在利用这些新的语言功能使<code>Vue</code>核心更小，更快，更强大。</strong></p>
+<p><code>Vue 3.0</code>目前处于原型设计阶段，我们已经实现了与<code>2.x</code>相近的特征基本相同的运行时了。<strong>下面列出的许多项目已经实施或确认可行。尚未实施或仍处于勘探阶段的标记为*</strong>。</p>
+<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><h5 id="高级API更改"><a href="#高级API更改" class="headerlink" title="高级API更改"></a>高级API更改</h5><blockquote>
+<p>L; DR：除了渲染函数API和作用域插槽语法之外的所有内容都将保持不变，或者你也可以通过兼容性构建使其兼容2.x版本。</p>
+</blockquote>
+<p>因为这是一个新的版本，所以会有一些突破性的变化。但是，我们非常重视兼容性，因此我们希望尽快和大家沟通这些更改。以下是当前计划的公共API更改：</p>
+<blockquote>
+<p>1、模板语法将保持99％相同。在<code>scoped slot</code>语法中可能会有一些小的调整，但除此之外我们没有计划为其他的模板语法更改任何其他内容。<br>2、3.0将原生支持基于类的组件，而且无需借助任何编译及各种 <code>stage</code> 阶段的特性，以此提供良好的编写体验。大多数当前选项在基于类的API中具有合理的映射。还可以选择使用<code>Stage-x</code>功能（如 <code>class</code> 的静态字段和装饰器 (<code>decorator</code>) 等仍然可以选择性地使用，以此增强编写体验）来增强创作体验。此外，API在设计时考虑了<code>TypeScript</code>类型推断。<code>3.x</code>代码库本身将使用<code>TypeScript</code>编写，并提供改进的<code>TypeScript</code>支持。（也就是说，在应用程序中使用<code>TypeScript</code>仍然是完全可选的。）<br>3、<code>2.x</code> 系列的基于对象的组件格式仍将受支持，不过会在内部将其转换为一个相应的类<br>4、 仍然支持<code>Mixins</code>。<em><br>5、顶级<code>API</code>可能会大修，以避免在安装插件时导致对<code>Vue</code>运行时的修改。相反，插件将应用并作用于组件树。这样可以更轻松地测试依赖于特定插件的组件，还可以使用不同的插件在同一页面上安装多个<code>Vue</code>应用程序，但它运用在相同的<code>Vue</code>运行时。</em><br>6、功能组件最终会是普通函数 - 但是，现在需要通过辅助函数显式创建异步组件。<br>7、将获得最多更改的部分是渲染函数中使用的<code>Virtual DOM</code>格式。我们目前正在收集主流第三方库作者的反馈意见，并将分享更多细节，因为我们对这些变化更有信心，但只要您不依赖于应用程序中的手写（非JSX）渲染功能，这个升级应该是一个相当简单的过程。</p>
+</blockquote>
+<h2 id="源代码架构"><a href="#源代码架构" class="headerlink" title="源代码架构"></a>源代码架构</h2><blockquote>
+<p>TL; DR：更好的解耦内部模块，<code>TypeScript</code>和更容易贡献的代码库。</p>
+</blockquote>
+<p>我们正在从头开始重新编写<code>vue 3.0</code>，以使得实现更清晰，更易维护的架构，特别是让对代码的贡献变得更加容易。我们将一些内部功能分解为单独的包，以便隔离复杂性。例如，观察者模块<code>observer</code>将成为单独的包，具有自己的公共API和测试用例。请注意，这不会影响到框架级的<code>API</code> - 您不必手动从多个包导入以使用<code>Vue</code>（导入多个文件）。相反，最终的<code>Vue</code>包将会把这些内部包文件进行组装。</p>
+<p>代码库现在也用<code>TypeScript</code>编写。虽然这将使掌握<code>TypeScript</code>成为为新代码库做出贡献的先决条件，但我们相信这些类型信息和<code>IDE</code>支持实际上将使新贡献者更容易做出有意义的贡献。</p>
+<p>将观察者（<code>observer</code>）和调度程序（<code>scheduler</code>）分离到单独的包中，还允许我们轻松地尝试这些部分的替代实现。例如，我们可以使用相同的API实现<code>IE11</code>兼容的观察器实现，或者<code>requestIdleCallback</code>在长时间更新期间利用可以为浏览器提供的备用调度程序。*</p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*H8yM0usFhWYlY6GV2wcrEw.png" alt="新的源代码结构（可能会有变化）"></p>
+<h2 id="观察机制"><a href="#观察机制" class="headerlink" title="观察机制"></a>观察机制</h2><blockquote>
+<p>TL; DR：更完整，精确，高效和可调试的反应性跟踪和用于创建可观测的API。</p>
+</blockquote>
+<p><code>3.0</code>将提供基于代理的观察器（<code>Proxy-based observer</code>）实现，该实现提供具有完整语言覆盖的响应式跟踪。这消除了<code>Vue 2</code>中基于<code>Object.defineProperty</code> 实现的许多限制：</p>
+<ol>
+<li>检测属性添加/删除（PS：是不是意味着我们不需要再使用<code>Vue.set()</code>了？）</li>
+<li>检测数组索引的变化和长度<code>length</code>的变化</li>
+<li>支持<code>Map</code>，<code>Set</code>，<code>WeakMap</code>和<code>WeakSet</code></li>
+</ol>
+<p>新的观察者还具有以下特征：</p>
+<ol>
+<li>用于创建可观察对象（<code>observable</code>响应式对象）的公开API。这为中小规模场景提供了轻量级，简单的跨组件状态管理解决方案。</li>
+<li>默认惰性监测（Lazy Observation）。在<code>2.x</code>中，任何被动数据，无论其大小，都会在启动时被观察到。如果您的数据集很大，这可能会导致应用启动时出现明显的性能开销。在<code>3.x</code>中，只需要观察用于渲染应用程序最初可见部分的数据，这会让整个的检测性能提升很多。</li>
+<li>更精确的更改通知。例如：在<code>2.x</code>中，使用<code>Vue.set</code>强制添加新属性将导致依赖于对象的所有观察者都被重新计算。在<code>3.x</code>中，只有依赖于该特定属性的观察者才会收到通知。</li>
+<li>不可变的<code>observables</code>：我们可以创建一个对象的“不可变”版本，即使在嵌套属性上也可以防止突变，除非系统在内部暂时解锁它。此机制可用于防止<code>props</code>或<code>Vuex</code>状态树以外的变化。</li>
+<li>更好的调试功能：我们可以精确地跟踪使用新增的 <code>renderTracked</code>和<code>renderTriggeredhook</code> 跟踪或触发组件重新呈现的时间和原因：</li>
+</ol>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*waSYB1v2aRgUFx21-JSwRg.png" alt="轻松了解组件重新渲染的原因"></p>
+<h2 id="其他运行时的改进"><a href="#其他运行时的改进" class="headerlink" title="其他运行时的改进"></a>其他运行时的改进</h2><blockquote>
+<p>TL; DR：更小，更快，支持摇树优化，支持 Fragments 和跨组件渲染，自定义渲染器API。</p>
+</blockquote>
+<ol>
+<li>更小：新的代码库从一开始就考虑到对摇树优化（<code>tree-shaking</code>）的友好。现在，可动态按需导入内置组件（<code>&lt;transition&gt;，&lt;keep-alive&gt;</code>）和运行时工具性指令（<code>v-model</code>）等功能，所有也是可摇树的。对于这个新的运行时，它的大小将永远保持在 <code>10kb</code> 之下。此外，使这些特性变为“可摇树的”后，我们就可以提供更多的内置特性，同时还不会增加网络负载——如果没使用到这些特性的话。</li>
+<li>更快：在初步基准测试中，我们看到全面的性能提升高达100％，包括原始<code>Virtual DOM</code>安装和修补（我们从<code>Inferno</code>学到了很多技巧，包括最快的<code>Virtual DOM</code>实现），组件实例初始化和数据观察。当您的应用程序启动时，<code>3.0</code>将减少花费一半的<code>JavaScript</code>时间。</li>
+<li><code>Fragments</code> 和 <code>Portal</code>：尽管尺寸减小，但3.0内置支持<code>Fragments</code>（返回多个根节点的组件）和<code>Portals</code>（在DOM的另一部分而不是在组件内部渲染子树）。</li>
+<li>改进的插槽(<code>solt</code>)机制：所有编译器生成的插槽现在都是函数，并在子组件的渲染调用期间调用。这样可以确保将插槽中的依赖关系收集为子节点而不是父节点的依赖关系。这意味着：1。当插槽内容发生变化时，只有子节点重新渲染; 2.当父组件重新渲染时，如果其插槽内容没有改变，则子组件不会重新渲染。此更改在组件树级别提供更精确的更改检测，因此会避免很多无用重新渲染！</li>
+<li>自定义渲染器（<code>Renderer</code>）API：这个<code>API</code>可以用于创建自定义渲染器，并且不再需要使用自定义修改来分配<code>Vue</code>代码库。这将使像<a href="https://weex-project.io/" target="_blank" rel="noopener">Weex</a>和<a href="https://nativescript-vue.org/" target="_blank" rel="noopener">NativeScript Vue</a>这样的“渲染为原生应用”更容易与<code>Vue</code>本身更改保持同步。它还可以轻松地为各种其他用途创建自定义渲染器。</li>
+</ol>
+<h2 id="编译器改进"><a href="#编译器改进" class="headerlink" title="编译器改进*"></a>编译器改进*</h2><blockquote>
+<p>TL; DR：摇树友好输出，更多AOT优化，具有更好错误信息和支持<code>source map</code>的解析器。</p>
+</blockquote>
+<ol>
+<li>在使用支持摇树优化的打包器中，使用可选功能的模板将生成使用ES模块语法导入这些功能的代码。因此，未使用的功能将从最终打包的代码中删除（PS：被摇掉）。</li>
+<li>由于新的<code>Virtual DOM</code>实现的改进，我们还能够执行更有效的编译时优化，例如静态树提升（<code>static tree hoisting</code>），静态属性提升（<code>static props hoisting</code>），以及为运行时提供一些来自编译器的提示，以此避开子组件的规范过程 (<code>children normalization</code>)，以及<code>VNode</code>创建快速路径等等……</li>
+<li>我们计划重写解析器以在模板编译错误中提供位置信息。并且带来对模板<code>source map</code>的支持，并且新的解析器可以作为第三方工具集成的基础，例如<code>eslint-plugin-vueIDE</code>语言服务。</li>
+</ol>
+<h2 id="IE11支持"><a href="#IE11支持" class="headerlink" title="IE11支持*"></a>IE11支持*</h2><blockquote>
+<p>TL; DR：IE11将受到支持，但将会是另外构建一个版本 (<code>build</code>) 的形式支持，不过这个版本会存在与 <code>Vue 2.x</code> 响应式机制所存在的同样的局限。</p>
+</blockquote>
+<p>新代码库目前仅针对主流浏览器，并假设浏览器支持<code>ES2015</code>。但是，我们知道很多用户在可预见的未来仍然需要支持<code>IE11</code>。对于<code>IE11</code>，大多数的<code>ES2015</code>功能都可以通过转译或者垫片的方式使用，但<code>Proxies</code>除外。我们的计划是使用相同的<code>API</code>实现另一个观察者，不过是基于以前的 <code>Object.defineProperty</code> <code>API</code>；。将使用此观察器变成一个单独的<code>Vue 3.x</code>版本。但是，此构建将受到<code>Vue 2.x</code>的相同更改检测警告的影响，因此与<code>3.x</code>的“现代”构建不完全兼容。我们知道这给第三方库作者带来了一些不便，因为他们需要了解两个不同版本的兼容性，但是当我们到达那个阶段时，我们将确保为此提供明确的指导。</p>
+<h2 id="我们将如何完成这些"><a href="#我们将如何完成这些" class="headerlink" title="我们将如何完成这些"></a>我们将如何完成这些</h2><p>首先，虽然我们今天（<code>PS：2018-09-30</code>）宣布，但我们还没有确定的时间表。我们目前所知道的是我们将采取的步骤：</p>
+<h5 id="1-征集运行时原型的反馈"><a href="#1-征集运行时原型的反馈" class="headerlink" title="1. 征集运行时原型的反馈"></a>1. 征集运行时原型的反馈</h5><p>这是我们现在所处的阶段。目前，我们已经有一个可以工作的运行时原型，包括新的观察者，<code>Virtual DOM</code>和组件实现。我们邀请了一组有影响力的社区项目的作者为内部变化提供反馈，并希望在继续开发之前确保他们对变化感到满意。我们希望确保生态系统中的重要库在我们发布<code>3.0</code>的同时准备就绪，以便依赖这些项目的用户可以轻松升级（PS：这个大赞）。</p>
+<h5 id="2-征集通过RFC的公众反馈"><a href="#2-征集通过RFC的公众反馈" class="headerlink" title="2.征集通过RFC的公众反馈"></a>2.征集通过RFC的公众反馈</h5><p>一旦我们对新设计获得一定程度的信心之后，对于每次重大变更，我们将打开一个专门的<code>RFC</code>专题问答，其中包括：</p>
+<ol>
+<li>变更范围;</li>
+<li>改变背后的思考：我们获得了什么，以及正在进行哪些权衡;</li>
+<li>升级路径：是采用完全后向兼容的形式，还是通过植入一个可移除的兼容性层，或者是通过修改代码来升级？</li>
+</ol>
+<p>我们将期待来自更广泛社区的公众反馈，以帮助我们确定这些想法。</p>
+<h5 id="3-在2-x和2-x-next中引入兼容功能"><a href="#3-在2-x和2-x-next中引入兼容功能" class="headerlink" title="3.在2.x和2.x-next中引入兼容功能"></a>3.在2.x和2.x-next中引入兼容功能</h5><p>我们不会忘记<code>2.x</code>！事实上，我们计划使用<code>2.x</code>逐步使用户适应新的变化。我们将通过<code>opt-in</code>适配器逐步将确认的API更改引入<code>2.x</code>. <code>2.x-next</code>将允许用户尝试新的基于<code>Proxy</code>的观察器。</p>
+<p><code>2.x</code>中的最后一个次要版本将成为<code>LTS</code>，并在<code>3.0</code>发布时继续接收18个月的错误和安全修复程序。</p>
+<h5 id="4-Alpha-阶段"><a href="#4-Alpha-阶段" class="headerlink" title="4.Alpha 阶段"></a>4.Alpha 阶段</h5><p>接下来，我们将完成3.0的编译器和服务器端渲染部分并开始制作<code>alpha</code>版本。这些主要用于在小型的应用中进行稳定性测试。</p>
+<h5 id="5-Beta阶段"><a href="#5-Beta阶段" class="headerlink" title="5. Beta阶段"></a>5. Beta阶段</h5><p>在测试阶段，我们的主要目标是更新支持库和工具，如<code>Vue Router，Vuex，Vue CLI，Vue DevTools</code>，并确保它们与新核心一起顺利运行。我们还将与社区的主要第三方库开发者合作，帮助他们为<code>3.0</code>做好准备。</p>
+<h5 id="6-RC阶段"><a href="#6-RC阶段" class="headerlink" title="6. RC阶段"></a>6. RC阶段</h5><p>一旦我们认为<code>API</code>和代码库稳定，我们将进入<code>API</code>稳定的的<code>RC</code>阶段。在此阶段，我们还将开发<code>“compat build”</code>：包含<code>2.x API</code>兼容层的<code>3.0</code>版本。此版本还将附带一个标记，您可以打开该标记以在应用程序中为<code>2.x API</code>使用情况发出弃用警告。<code>compat</code>构建可用作将应用程序升级到<code>3.0</code>的指南。</p>
+<h5 id="7-IE11构建"><a href="#7-IE11构建" class="headerlink" title="7. IE11构建"></a>7. IE11构建</h5><p>最终版本之前的最后一个任务是如上所述的<code>IE11</code>兼容性构建。</p>
+<h5 id="8-最终发布"><a href="#8-最终发布" class="headerlink" title="8.最终发布"></a>8.最终发布</h5><p>说实话，我们不知道这种情况何时会发生，但很可能在2019年发生。再次，我们更关心的是可以稳定运行，而不是为了确定一个确定的时间。虽然有很多工作要做，但是我们确很高兴，并为以后的工作感到期待。</p>
+<hr>
+<p><code>Vue 3.0</code> 已经有了初步的发布计划，那么我们还有必要再去进行<code>Vue 2.x</code>的学习吗？</p>
+<p>在上面犹大的描述中我们可以看到，<code>Vue 3.0</code>并不会出现一个断层的更新，而是会有一个逐步升级的过渡计划，犹大的目标是使我们可以平滑的从<code>2.x</code>过渡到<code>3.0</code>中，所以对<code>2.x</code>的学习还是非常有必要的。那么我们应该如何进行<code>Vue 2.x</code>的学习呢？</p>
+<p> <a href="https://gitbook.cn/gitchat/column/5b5b38219a3b4b3ca3085030" target="_blank" rel="noopener">《深入浅出学 Vue 开发》</a>，帮你一步到位，从<strong><code>Vue</code>的基础语法 到 <code>Vue</code>的核心代码 到 <code>Vue</code>的周边生态 到 <code>webpack</code>模块打包器 到 <code>@Vue/cli</code>脚手架 到 项目实战</strong> 一步到位，帮你解决学习<code>Vue</code>的所有问题。微信扫码可直接进入哦：</p>
+<p><img src="https://images.gitbook.cn/d3f87dd0-ba5e-11e8-bee8-eb0307c32f5b" alt="在这里插入图片描述"></p>
+</div><div class="tags"></div><div class="post-nav"><a class="next" href="/2018/09/18/升级node.js和npm/">升级node.js和npm</a></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'UC5rUi67oaW2X6t3Pxukzrua-gzGzoHsz',
+  appKey:'QeB4cvAyzbSXXFcYjvgwtcti',
+  placeholder:'吐槽一波',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://lgdsunday.club"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IOS/">IOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/Vue/">Vue</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/Vue/Vuex/">Vuex</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ReactNative/">ReactNative</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/尤雨溪：Vue 3.0 计划/">尤雨溪：Vue 3.0 计划（译）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/18/升级node.js和npm/">升级node.js和npm</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/30/深入Vue实现原理，实现一个响应式框架/">深入Vue实现原理，实现一个响应式框架</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/30/Vue的状态管理器：Vuex/">Vue的状态管理器：Vuex</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/03/GitChat：深入浅出学Vue开发：4、Vue的生命周期及源码实现/">GitChat：深入浅出学Vue开发：4、Vue的生命周期及源码实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/03/GitChat：深入浅出学Vue开发：1、初探Vue/">GitChat：深入浅出学Vue开发：1、初探Vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/GitChat：深入浅出学Vue开发：导读/">GitChat：深入浅出学Vue开发：导读</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/IOS 嵌套实现分页的TableView/">IOS 嵌套实现分页的TableView</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/Activity触摸事件的分发机制/">Activity触摸事件的分发机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/Android 6.0RunTime Permission完美解决方案/">Android 6.0RunTime Permission完美解决方案</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 其他链接</i></div><ul></ul><a href="http://www.lgdsunday.club/" title="星期天俱乐部" target="_blank">星期天俱乐部</a><ul></ul><a href="https://blog.csdn.net/u011068996/" title="csdn" target="_blank">csdn</a><ul></ul><a href="https://juejin.im/user/5b397dbfe51d45589271b11c/" title="掘金" target="_blank">掘金</a><ul></ul><a href="https://www.imooc.com/u/3330348/courses?sort=publish" title="慕课网" target="_blank">慕课网</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">LGD_Sunday.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
