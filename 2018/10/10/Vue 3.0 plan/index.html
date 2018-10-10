@@ -3,7 +3,7 @@ $(function(){$("a[title='站长统计']").css("display","none");});</script><lin
 <p>原文：<a href="https://medium.com/the-vue-point/plans-for-the-next-iteration-of-vue-js-777ffea6fabf" target="_blank" rel="noopener">Plans for the Next Iteration of Vue.js</a><br>作者：Evan You（尤雨溪） 发表时间：Sep 30, 2018<br>转载请写明出处：<a href="https://blog.lgdsunday.club/2018/10/10/Vue%203.0%20plan/" target="_blank" rel="noopener">https://blog.lgdsunday.club/2018/10/10/Vue%203.0%20plan/</a></p>
 </blockquote>
 <h2 id="计划下一次迭代Vue-js"><a href="#计划下一次迭代Vue-js" class="headerlink" title="计划下一次迭代Vue.js"></a>计划下一次迭代Vue.js</h2><p>上周在<a href="https://vuejs.london/summary/" target="_blank" rel="noopener">Vue.js伦敦</a>，我简要介绍了Vue的下一个主要版本即将发布的内容。这篇文章提供了对计划的深入概述。</p>
-<p><img src="https://cdn-images-1.medium.com/max/1600/1*vFC8tDUGLlXIiqT7ymf3xg.png" alt="Vue"></p>
+<p><img src="https://images.gitbook.cn/8e749300-cc4e-11e8-bb45-0def80a456c4" alt="Vue"></p>
 <h2 id="为什么要更新主版本？"><a href="#为什么要更新主版本？" class="headerlink" title="为什么要更新主版本？"></a>为什么要更新主版本？</h2><p><code>Vue 2.0</code> 恰好在<a href="https://medium.com/the-vue-point/vue-2-0-is-here-ef1f26acf4b8" target="_blank" rel="noopener">两年前发布了</a>（时间过得真快！）。在此期间，核心仍然向后兼容五个次要版本。我们已经积累了许多可以带来改进的想法，但一直没有发布它们（3.0），因为它们与现在的版本（2.x）相比，变化很大。与此同时，<code>JavaScript</code>生态系统和语言本身也在迅速发展。有了需要新的工具可以增强我们的工作流程，以及出现了许多新的语言功能，可以解决<code>Vue</code>试图解决的问题。并且有了使它变得更简单，更完整和更有效的解决方案。更令人兴奋的是，我们看到<code>ES2015</code>支持成为所有主流浏览器的标准。<strong><code>Vue 3.0</code>旨在利用这些新的语言功能使<code>Vue</code>核心更小，更快，更强大。</strong></p>
 <p><code>Vue 3.0</code>目前处于原型设计阶段，我们已经实现了与<code>2.x</code>相近的特征基本相同的运行时了。<strong>下面列出的许多项目已经实施或确认可行。尚未实施或仍处于勘探阶段的标记为*</strong>。</p>
 <h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><h5 id="高级API更改"><a href="#高级API更改" class="headerlink" title="高级API更改"></a>高级API更改</h5><blockquote>
@@ -19,7 +19,7 @@ $(function(){$("a[title='站长统计']").css("display","none");});</script><lin
 <p>我们正在从头开始重新编写<code>vue 3.0</code>，以使得实现更清晰，更易维护的架构，特别是让对代码的贡献变得更加容易。我们将一些内部功能分解为单独的包，以便隔离复杂性。例如，观察者模块<code>observer</code>将成为单独的包，具有自己的公共API和测试用例。请注意，这不会影响到框架级的<code>API</code> - 您不必手动从多个包导入以使用<code>Vue</code>（导入多个文件）。相反，最终的<code>Vue</code>包将会把这些内部包文件进行组装。</p>
 <p>代码库现在也用<code>TypeScript</code>编写。虽然这将使掌握<code>TypeScript</code>成为为新代码库做出贡献的先决条件，但我们相信这些类型信息和<code>IDE</code>支持实际上将使新贡献者更容易做出有意义的贡献。</p>
 <p>将观察者（<code>observer</code>）和调度程序（<code>scheduler</code>）分离到单独的包中，还允许我们轻松地尝试这些部分的替代实现。例如，我们可以使用相同的API实现<code>IE11</code>兼容的观察器实现，或者<code>requestIdleCallback</code>在长时间更新期间利用可以为浏览器提供的备用调度程序。*</p>
-<p><img src="https://cdn-images-1.medium.com/max/1600/1*H8yM0usFhWYlY6GV2wcrEw.png" alt="新的源代码结构（可能会有变化）"></p>
+<p><img src="https://images.gitbook.cn/94e98f10-cc4e-11e8-be38-8feef20eafd9" alt="新的源代码结构（可能会有变化）"></p>
 <h2 id="观察机制"><a href="#观察机制" class="headerlink" title="观察机制"></a>观察机制</h2><blockquote>
 <p>TL; DR：更完整，精确，高效和可调试的反应性跟踪和用于创建可观测的API。</p>
 </blockquote>
@@ -37,7 +37,7 @@ $(function(){$("a[title='站长统计']").css("display","none");});</script><lin
 <li>不可变的<code>observables</code>：我们可以创建一个对象的“不可变”版本，即使在嵌套属性上也可以防止突变，除非系统在内部暂时解锁它。此机制可用于防止<code>props</code>或<code>Vuex</code>状态树以外的变化。</li>
 <li>更好的调试功能：我们可以精确地跟踪使用新增的 <code>renderTracked</code>和<code>renderTriggeredhook</code> 跟踪或触发组件重新呈现的时间和原因：</li>
 </ol>
-<p><img src="https://cdn-images-1.medium.com/max/1600/1*waSYB1v2aRgUFx21-JSwRg.png" alt="轻松了解组件重新渲染的原因"></p>
+<p><img src="https://images.gitbook.cn/9aaa2f40-cc4e-11e8-b452-15eec1b99303" alt="轻松了解组件重新渲染的原因"></p>
 <h2 id="其他运行时的改进"><a href="#其他运行时的改进" class="headerlink" title="其他运行时的改进"></a>其他运行时的改进</h2><blockquote>
 <p>TL; DR：更小，更快，支持摇树优化，支持 Fragments 和跨组件渲染，自定义渲染器API。</p>
 </blockquote>
