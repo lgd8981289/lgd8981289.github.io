@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="欢迎访问我的博客，如果大家想要了解我可以访问http://chat.lgdsunday.club/，这里提供了一个好玩的交互式问题界面"><title> | LGD_Sunday</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><script type="text/javascript" src="https://s13.cnzz.com/z_stat.php?id=1274342622&amp;web_id=1274342622"></script><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274342622'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1274342622' type='text/javascript'%3E%3C/script%3E"));
+$(function(){$("a[title='站长统计']").css("display","none");});</script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">LGD_Sunday</h1><a id="logo" href="/.">LGD_Sunday</a><p class="description">济南小哥</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="http://www.lgdsunday.club/"><i class="fa fa-user"> 关于我</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"></h1><div class="post-meta">Oct 18, 2018</div><a class="disqus-comment-count" href="/2018/10/18/JavaScript设计模式详解：01、导学/#vcomment"><span class="valine-comment-count" data-xid="/2018/10/18/JavaScript设计模式详解：01、导学/"></span><span> 条评论</span></a><div class="post-content"><h2 id="学习设计模式的重要性"><a href="#学习设计模式的重要性" class="headerlink" title="学习设计模式的重要性"></a>学习设计模式的重要性</h2><p>无论你是前端程序猿、后端程序猿还是客户端程序猿，掌握<strong>设计模式</strong>都是你所必须要学会的一项技能。如果说你只会在那里呼呼呼的写代码，不懂得<strong>设计模式</strong>那么你永远也没有办法成为一个合格的高级工程师，更别说是架构师了。</p>
+<p>大家想一下你们心中的大牛，你有见过他们整天坐在这里撸代码吗？没有吧，他们大多数的时间都是在那想，想这个程序应该怎么设计，做好了设计之后才会去动手做架构，然后再交给下面的小弟去实现。他如何能够做到这些？就是因为他对各种设计思路了熟于心。从小程序猿到大牛架构师，从写好代码到做好设计，设计模式都会是你的必经之路。</p>
+<p>举个例子，以<code>《Thingking in Java》</code>这本书为例，如果大家学习过<code>java</code>开发的话，那么一定会听说过这本书，<code>《Thingking in Java》</code>作为<code>Java</code>的一个入门书籍，却能做到全球皆知，被誉为想要学好<code>java</code>的必读课程，凭借的是什么？就是因为<code>《Thingking in Java》</code>的作者将面向对象的思想巧妙的融合在<code>Java</code>的具体技术上，潜移默化的让你感觉到了一种新的语言和新的思想方式的诞生。这就是设计的作用，把平庸无奇的代码变成能给你带来新的思想的东西，这就是大神与普通程序员最大的区别，如果你也想成为大神，那么你就必须要学好设计模式。</p>
+<h2 id="论设计与模式"><a href="#论设计与模式" class="headerlink" title="论设计与模式"></a>论设计与模式</h2><p>什么是设计模式啊？<strong>设计是设计，模式是模式</strong>，我们应该把它分开来看。</p>
+<p>首先我们了解一下什么是<strong>设计</strong>。我们这里所说的 <strong>设计</strong> 不单单是指的设计某一款程序的架构，或者设计某个产品，某个<code>UI</code>，更不是你们公司设计师… 设计是一个非常广的概念，那么何为设计呢 ？</p>
+<blockquote>
+<p>所为设计即为：<strong>对人造事物的构想与规划</strong></p>
+</blockquote>
+<p>相对于设计这样一个抽象的概念，<strong>对人造事物的构想与规划</strong>，这样一个具象的解释就要好理解的多。</p>
+<blockquote>
+<p>小A是个厨师，有一天他需要去做一些包子，如果他按照以前的模具来直接把这个包子做出来，那么这就不是一个设计，这只是一个工作。而如果他希望能够<strong>通过一些方法来解决包包子这么一个问题</strong>。 这就是一个设计。</p>
+</blockquote>
+<p>即：<strong>人造事物（小A包包子）的构想与规划（通过一些方法来解决包包子这么一个问题）</strong>。这就是对一个设计的描述，但是有一点需要谨记，这里的构想与规划不是“天马行空”漫无目的的，他需要遵循一个标准或是规则，小A如果做出来一个月饼，那么它就不是包子了对吧。</p>
+<p>这样的标准或规则，放到我们的程序设计之中其实就是的关于设计的四大准则，五大原则了。但是在这里我不打算把这些条条框框的东西都列举出来一个个说哈，我觉的这种方式不好，一个个说大家也都记不住，背下来也不会用。所以在这里我准备了比喻，期望可以使用这一个比喻来把何为设计解释清楚：</p>
+<blockquote>
+<p>1、我们把一个程序想象成一个超市，程序中的设计，就是超市对于商品的摆放，每一个货架只会兜售一种类型的商品，它不会把杀虫剂和洗发水放到一个货架上去卖，就好像我们每个功能只负责处理一个特定的事情，而不会去尝试处理更多。<br>2、 它的每个货架都可以随便移动，就好比我们的每一个模块都需要具有可移植性    。<br>3、超市不会把同种类型的所有商品都摆放出来，它只会拿出来卖得最好的，适合绝大多数人的商品，至于剩下的那百分之一的用户，超市一般不会考虑，从而使超市快速运营，快速盈利，就像我们做程序，我们不可能在一开始就把所有的功能所有的点都想到，我们需要做的是如何满足大部分的需求，从而使我们的程序可以快速上线。<br>4、超市的所有商品都是面向用户的，所以他所有的商品摆放，所有的活动都是以用户为基础来做的，同理我们的程序是给机器看的，由程序员写的，面向用户来用的，仅从我们程序设计来说，最重要的就是第二步，由程序员来写，所以，你的代码可读性就非常重要，你一个方法名叫<code>a</code>，谁知道是什么对吧，语义化的程序非常重要，不要忘记我们的程序是给机器看的，由程序员写的，面向用户来用的。</p>
+</blockquote>
+<p>上面的比喻就是关于程序设计的四大准则，虽然内容有点多，但是我觉得这样更方便大家来记住，所谓四大准则就是：</p>
+<ol>
+<li>让每个模块只做好一件事情</li>
+<li>可移植性非常重要</li>
+<li>小即是美，快速建立原型</li>
+<li>语义化</li>
+</ol>
+<p>而所谓五大原则就是：</p>
+<ol>
+<li>单一职责原则</li>
+<li>开放封闭原则</li>
+<li>里式置换原则</li>
+<li>接口独立原则</li>
+<li>依赖倒置原则</li>
+</ol>
+<p>而至于模式就是常说的那 23 种设计模式，这个我们会在后面跟大家详细说。</p>
+<h2 id="前端学习设计模式的困惑"><a href="#前端学习设计模式的困惑" class="headerlink" title="前端学习设计模式的困惑"></a>前端学习设计模式的困惑</h2><p>对于现在的设计模式来说，网上的资料实在是太多啦。 那么为什么还要单独出这么一门课呢？原因有三点：</p>
+<ol>
+<li>首先是因为现在网上的大多数课程都是以<code>java</code>为基础来讲解的。<code>java</code>这种强类型的面向对象语言确实是用来讲解设计模式的最合适的语言，但是如果是对于我们前端工程师来说，我们并不是很熟悉<code>java</code>，那么它的这种方式，未免对我们不太友好。并且因为前端与后端主要负责的工作不同，对于设计模式的侧重点和具体的表现方式，也会很大的不同。</li>
+<li>然后就是现在网上关于设计模式的资料，大部分都是直接把设计原则，设计模式，给你列出来，一个一个的记住就行了。这种方式，一是你容易忘，二是你就算背下来了你到时候你也不会用。</li>
+<li>最后就是我们把这些设计模式记住了，但是我们不知道什么时候去用，甚至不知道应不应该用。</li>
+</ol>
+<p>就是因为这些原因，才促使我去做了这一个系列的文章。意在让大家能够真正的学会，学懂设计模式。</p>
+<h2 id="课程设计"><a href="#课程设计" class="headerlink" title="课程设计"></a>课程设计</h2><p>关于本次课程我打算分成三个部分来讲：</p>
+<ol>
+<li>首先是<code>UML</code>类图。这个主要是为了方便我们在后面的目录中进行代码设计的时候能够使用<code>UML</code>类图为大家进行统一表达。这个篇幅不会太长，会使用一章的内容为大家讲解。</li>
+<li>然后设计的四大准则和五大原则，这个也会通过一章的内容来为大家讲解，讲解的时候会根据一个具体的问题，通过<code>思路讲解 -&gt; 绘制UML类图 -&gt; 代码实现</code>这样的步骤来设计。</li>
+<li>最后就是二十三种设计模式，这也是我们课程最主要的内容。在这里我会把这二十三种设计模式根据在前端的重要程度进行不同程度的讲解，可大致分为三种：<pre><code>1. 非常重要 -- 详细讲解
+2. 一般重要 -- 小篇幅讲解
+3. 很少使用 -- 略作了解
+</code></pre>详细讲解的部分都会通过<code>事例 -&gt; 分析 -&gt; UML类图 -&gt; 代码实现</code>这样的方式来讲解。<br>小篇幅讲解的部分会通过<code>代码事例分析</code>这样的方式来讲解。<br>略作了解的部分则只会了解定义。</li>
+</ol>
+<h2 id="本课程的作用"><a href="#本课程的作用" class="headerlink" title="本课程的作用"></a>本课程的作用</h2><p>本课程精心设计，期望通过本课程的学习，能够给大家带来以下收获</p>
+<ol>
+<li>掌握<code>UML类图</code>的绘制</li>
+<li>掌握四大设计准则、五大设计原则、二十三种设计模式</li>
+<li>提升程序设计能力</li>
+<li>了解平常使用的开源库中存在的设计模式</li>
+</ol>
+<h2 id="学习本课程之前的技能"><a href="#学习本课程之前的技能" class="headerlink" title="学习本课程之前的技能"></a>学习本课程之前的技能</h2><ol>
+<li>面向对象的思想</li>
+<li><code>JavaScript</code>的基本语法</li>
+<li><code>ES6</code>的基本语法</li>
+<li>了解<code>jQuery</code>的基本使用</li>
+<li>了搭建过<code>npm、nodeJs</code>环境</li>
+<li>了解<code>webpack</code>的基础配置，至少知道它是干嘛滴</li>
+</ol>
+<p>以上的这些知识，希望大家能够在学习本课程之前有所了解，在本课程中也会进行一些讲解，但不会特别多。</p>
+<h2 id="面向群体"><a href="#面向群体" class="headerlink" title="面向群体"></a>面向群体</h2><p>本课程面向初步接触前端开发，或者有一些前端开发经验想要更进一步的工程师。</p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2018/11/19/Vue.js 3.0 新特性预览/">Vue.js 3.0 新特性预览 [转]</a><a class="next" href="/2018/10/10/Vue 3.0 plan/">尤雨溪：Vue 3.0 计划（译）</a></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'UC5rUi67oaW2X6t3Pxukzrua-gzGzoHsz',
+  appKey:'QeB4cvAyzbSXXFcYjvgwtcti',
+  placeholder:'吐槽一波',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://lgdsunday.club"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IOS/">IOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/Vue/">Vue</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/Vue/Vuex/">Vuex</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ReactNative/">ReactNative</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/18/JavaScript设计模式详解：09、观察者模式/">JavaScript设计模式详解：09、观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/12/JavaScript设计模式详解：08、外观模式/">JavaScript设计模式详解：08、外观模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/12/JavaScript设计模式详解：07、代理模式/">JavaScript设计模式详解：07、代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/JavaScript设计模式详解：06、装饰器模式/">JavaScript设计模式详解：06、装饰器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/JavaScript设计模式详解：05、适配器模式/">JavaScript设计模式详解：05、适配器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/JavaScript设计模式详解：04、单例模式/">JavaScript设计模式详解：04、单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/JavaScript设计模式详解：03、工厂模式/">JavaScript设计模式详解：03、工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/JavaScript设计模式详解：02、UML类图/">JavaScript设计模式详解：02、UML类图</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/19/Vue.js 3.0 新特性预览/">Vue.js 3.0 新特性预览 [转]</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/18/JavaScript设计模式详解：01、导学/">JavaScript设计模式详解：01、导学</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 其他链接</i></div><ul></ul><a href="http://www.lgdsunday.club/" title="星期天俱乐部" target="_blank">星期天俱乐部</a><ul></ul><a href="https://blog.csdn.net/u011068996/" title="csdn" target="_blank">csdn</a><ul></ul><a href="https://juejin.im/user/5b397dbfe51d45589271b11c/" title="掘金" target="_blank">掘金</a><ul></ul><a href="https://www.imooc.com/u/3330348/courses?sort=publish" title="慕课网" target="_blank">慕课网</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">LGD_Sunday.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
